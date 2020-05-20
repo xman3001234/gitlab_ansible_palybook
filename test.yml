@@ -3,4 +3,4 @@
   - all
 - tasks:
   - name: ping the host
-    
+    command: ping
