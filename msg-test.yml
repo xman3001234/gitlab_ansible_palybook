@@ -1,0 +1,6 @@
+- name: MSG ECHO TEST
+  hosts: all
+  tasks:
+    - name: Message
+      debug:
+        msg: "$LANG"
