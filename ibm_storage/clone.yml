@@ -1,0 +1,101 @@
+- name: Using the IBM Spectrum Virtualize collection to create a Flash Copy Mapping
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Create Flash Copy Mapping for clone volume
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/playbook.debug
+        state: present
+        name: volume-clone
+        volume: vol4testcreateclone
+        clone: cloneofvol4
+        mdiskgrp: Pool0
+        copyrate: 100
+        cleanrate: 100
+
+- name: Using the IBM Spectrum Virtualize collection to prestart a Flash Copy Mapping
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: prestart a Flash Copy Mapping
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/playbook.debug
+        state: prestart
+        name: volume-clone
+        volume: vol4testcreateclone
+        clone: cloneofvol4
+        restore: true
+
+- name: Using the IBM Spectrum Virtualize collection to start a Flash Copy Mapping
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: start a Flash Copy Mapping
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/playbook.debug
+        state: start
+        name: volume-clone
+        volume: vol4testcreateclone
+        clone: cloneofvol4
+        restore: true
+
+- name: Using the IBM Spectrum Virtualize collection to stop a Flash Copy Mapping
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: stop a Flash Copy Mapping
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/playbook.debug
+        state: stop
+        name: volume-clone
+        volume: vol4testcreateclone
+        clone: cloneofvol4
+        force: true
+
+- name: Using the IBM Spectrum Virtualize collection to delete a Flash Copy Mapping
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Delete a Flash Copy Mapping for clone colume
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/playbook.debug
+        name: volume-clone
+        volume: vol4testcreateclone
+        clone: cloneofvol4
+        state: absent
+        force: true
