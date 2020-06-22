@@ -3,7 +3,7 @@
   hosts: all
   collections:
     - ibm.spectrum_virtualize
-#  gather_facts: no
+  gather_facts: no
   connection: local
   tasks:
     - name: Get volume info
