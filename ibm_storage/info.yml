@@ -1,10 +1,9 @@
----
 - name: Using the IBM Spectrum Virtualize collection
   collections:
     - ibm.spectrum_virtualize
   gather_facts: no
   connection: local
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Gather info from storage
       ibm_svc_info:
