@@ -1,0 +1,13 @@
+---
+- name: Using the IBM Spectrum Virtualize collection
+  hosts: localhost
+  tasks:
+    - name: Gather info from storage
+      ibm.spectrum_virtualize.ibm_svc_info:
+        clustername: 172.16.13.29
+        username: superuser
+        password: 1qaz@WSX
+        log_path: /tmp/playbook.debug
+        name: gather_info
+        state: info
+        gather_subset: all
