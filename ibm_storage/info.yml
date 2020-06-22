@@ -1,4 +1,5 @@
-- name: Using the IBM Spectrum Virtualize collection to gater info from storage
+---
+- name: Using the IBM Spectrum Virtualize collection
   collections:
     - ibm.spectrum_virtualize
   gather_facts: no
@@ -7,11 +8,11 @@
   tasks:
     - name: Gather info from storage
       ibm_svc_info:
-        clustername: 172.16.13.29
+        clustername: 172.16.15.29
         domain:
         username: superuser
         password: 1qaz@WSX
-        log_path: logs/playbook.debug
+        log_path: /tmp/playbook.debug
         name: gather_info
         state: info
-        gather_subset: targetportfc
+        gather_subset: all
