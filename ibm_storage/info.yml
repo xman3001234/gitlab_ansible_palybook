@@ -1,17 +1,14 @@
-- name: Using the IBM Spectrum Virtualize collection
+- name: Using the IBM Spectrum Virtualize collection to gather storage information
+  hosts: all
   collections:
     - ibm.spectrum_virtualize
   gather_facts: no
-  connection: local
-  hosts: all
   tasks:
-    - name: Gather info from storage
+    - name: Get volume info
       ibm_svc_info:
-        clustername: 172.16.15.29
-        domain:
+        clustername: 172.16.13.29
         username: superuser
         password: 1qaz@WSX
-        log_path: /tmp/playbook.debug
-        name: gather_info
+        log_path: /tmp/ansible.log
         state: info
-        gather_subset: all
+        gather_subset: vol
