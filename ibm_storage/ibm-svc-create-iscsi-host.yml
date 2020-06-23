@@ -1,0 +1,22 @@
+- name: IBM Storage create an iSCSI host
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: Define a new iSCSI host
+      ibm_svc_host:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/iscsihost-create.debug
+        name: "{{iscsihost}}"
+        state: present
+        iscsiname: "{{iscsiname}}"
+        iogrp: 0:1:2:3
+        protocol: scsi
+        type: generic
+
+

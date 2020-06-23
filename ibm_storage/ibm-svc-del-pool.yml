@@ -1,0 +1,17 @@
+- name: IBM Storage delete a pool
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: delete mdisk group
+      ibm_svc_mdiskgrp:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        name: "{{delpoolname}}"
+        state: absent
+
+

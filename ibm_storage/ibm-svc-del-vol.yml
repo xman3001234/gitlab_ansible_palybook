@@ -1,0 +1,18 @@
+- name: IBM Storage delete a volume
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: Delete volume
+      ibm_svc_vdisk:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/del-vol.debug
+        name: "{{delvolname}}"
+        state: absent
+
+

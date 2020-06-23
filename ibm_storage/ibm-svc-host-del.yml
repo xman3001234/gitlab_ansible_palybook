@@ -1,0 +1,18 @@
+- name: IBM Storage delete a host
+  hosts: localhost
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: Delete host
+      ibm_svc_host:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/host-del.debug
+        name: "{{delhost}}"
+        state: absent
+
+

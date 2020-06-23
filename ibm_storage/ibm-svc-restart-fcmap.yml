@@ -1,0 +1,21 @@
+- name: IBM Storage restart a Flash Copy Mapping
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: prestart a Flash Copy Mapping
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/restart-fcmap.debug
+        state: prestart
+        name: "{{flashcopymapping}}"
+        volume: "{{sourcevol}}"
+        clone: "{{targetvol}}"
+        restore: true
+
+

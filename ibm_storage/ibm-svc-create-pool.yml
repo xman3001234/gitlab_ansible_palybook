@@ -1,0 +1,21 @@
+- name: IBM Storage create a pool
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: make mdisk group
+      ibm_svc_mdiskgrp:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        name: "{{poolname}}"
+        state: present
+        datareduction: no
+        easytier: auto
+        encrypt: no
+        ext: 1024
+
+

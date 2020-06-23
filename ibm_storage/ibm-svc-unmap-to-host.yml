@@ -1,0 +1,19 @@
+- name: IBM Storage unmap a volume from a host
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: unmap volume from host
+      ibm_svc_vol_map:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/unmap-host.debug
+        volname: "{{unmapvol}}"
+        host: "{{unmaphost}}"
+        state: absent
+
+

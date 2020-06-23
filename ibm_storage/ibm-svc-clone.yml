@@ -1,0 +1,23 @@
+- name: IBM storage create a Flash Copy Mapping
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: Create Flash Copy Mapping for clone volume
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/clone.debug
+        state: present
+        name: "{{flashcopymapping}}"
+        volume: "{{sourcevol}}"
+        clone: "{{targetvol}}"
+        mdiskgrp: Pool0
+        copyrate: "100"
+        cleanrate: "100"
+
+

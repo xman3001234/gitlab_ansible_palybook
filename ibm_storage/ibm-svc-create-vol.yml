@@ -1,0 +1,22 @@
+- name: IBM storage create a volume
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: Create volume
+      ibm_svc_vdisk:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/create-vol.debug
+        name: "{{volname}}"
+        state: present
+        mdiskgrp: "{{poolname}}"
+        easytier: 'off'
+        size: "{{size}}"
+        unit: gb
+
+

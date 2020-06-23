@@ -1,0 +1,21 @@
+- name: IBM Storage delete a Flash Copy Mapping
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: Delete a Flash Copy Mapping for clone colume
+      ibm_svc_volume_clone:
+        clustername: "{{clustername}}"
+        domain: "{{domain}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/del-clone.debug
+        name: "{{flashcopymapping}}"
+        volume: "{{sourcevol}}"
+        clone: "{{targetvol}}"
+        state: absent
+        force: true
+
+

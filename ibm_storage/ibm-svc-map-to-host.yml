@@ -1,0 +1,19 @@
+- name: IBM Storage map a volume to a host
+  hosts: all
+  collections:
+    - ibm.spectrum_virtualize
+#  gather_facts: no
+  connection: local
+  tasks:
+    - name: map volume to host
+      ibm_svc_vol_map:
+        clustername: "{{clustername}}"
+        domain: 
+        username: "{{username}}"
+        password: "{{password}}"
+        log_path: /tmp/map-to-host.debug
+        volname: "{{volname}}"
+        host: "{{mappinghost}}"
+        state: present
+
+
