@@ -1,8 +1,6 @@
 ---
 - name: IBM storage information
   hosts: all
-  become_user: root
-  become: True
   collections:
     - ibm.spectrum_virtualize
 #  gather_facts: no
