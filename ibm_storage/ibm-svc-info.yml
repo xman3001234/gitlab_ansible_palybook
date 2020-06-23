@@ -1,17 +1,17 @@
 - name: IBM storage information
   hosts: all
   collections:
-    - ibm.spectrum_virtualize
+  - ibm.spectrum_virtualize
 #  gather_facts: no
   connection: local
   tasks:
-    - name: Get Storage Info
-      ibm_svc_info:
-        clustername: "{{clustername}}"
-        username: "{{username}}"
-        password: "{{password}}"
-        log_path: /tmp/ibm-svc-info.log
-        state: info
-        gather_subset: "{{infotype}}"
-        name:
+  - name: Get Storage Info
+    ibm_svc_info:
+      clustername: "{{clustername}}"
+      username: "{{username}}"
+      password: "{{password}}"
+      log_path: /tmp/ibm-svc-info.log
+      state: info
+      gather_subset: "{{infotype}}"
+      name:
 
